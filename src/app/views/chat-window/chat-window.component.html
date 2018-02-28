@@ -1,0 +1,42 @@
+<div class="chat-window-container">
+  <div class="chat-window">
+    <div class="panel-container">
+      <div class="panel panel-default">
+
+        <div class="panel-heading top-bar">
+          <div class="panel-title-container">
+            <h3 class="panel-title">
+              <span class="glyphicon glypicon-comment"></span>
+              Chat - {{currentThread.name}}
+            </h3> <!-- .panel-title -->
+          </div> <!-- .panel-title-container -->
+          <div class="panel-buttons-container">
+          </div> <!-- .panel-buttons-container -->
+        </div> <!-- .panel-heading .top-bar -->
+
+        <div class="panel-body msg-container-base">
+          <app-chat-message
+          *ngFor="let message of currentThread.messages"
+          [message]="message">
+          </app-chat-message>
+        </div> <!-- .panel-body .msg-container-base -->
+
+        <div class="panel-footer">
+          <div class="input-group">
+            <input type="text"
+            class="chat-input"
+            placeholder="Write your message here..."
+            (keydown.enter)="onEnter($event)"
+            [(ngModel)]="draftMsg.text" />
+            <span class="input-group-btn">
+              <button class="btn-chat"
+              (click)="onEnter($event)"
+              >Send</button>
+            </span>
+          </div> <!-- .input-group -->
+        </div> <!-- .panel-footer -->
+
+      </div> <!-- .panel .panel-default -->
+    </div> <!-- .panel-container -->
+  </div> <!-- .chat-window -->
+</div> <!-- .chat-window-container -->
